@@ -26,5 +26,5 @@ An AI customer support assistant for ZentroMart that answers customer queries us
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/akshayaaa727/ZentroMart-VoiceOps-2026
 cd Capstone_Project_Dataset_FTTT_2026
