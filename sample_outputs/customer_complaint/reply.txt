@@ -1,0 +1,9 @@
+I'm happy to help you with your concern about the delayed order. However, I need to clarify that our policy states that orders can be cancelled free of charge until they are shipped (Source: [pol_cancellations.md — [CAN-1]](https://zentrormart.com/docs/pol_cancellations.md#CAN-1)).
+
+Since your order has been delayed for three days, I would recommend checking with your family, neighbors, or building security to see if the parcel has been delivered (Source: [help_track_order.md — [TRK-2]](https://zentrormart.com/docs/help_track_order.md#TRK-2)).
+
+If you have not received the parcel within 48 hours, you can report it as a missing item under DWM-1 (Source: [help_track_order.md — [TRK-2]](https://zentrormart.com/docs/help_track_order.md#TRK-2)).
+
+Regarding the delay, I recommend checking the status of your order in the app to see if there are any updates (Source: [pol_cancellations.md — [CAN-1]](https://zentrormart.com/docs/pol_cancellations.md#CAN-1)).
+
+If you have any further questions or concerns, please let me know and I'll be happy to assist you.

@@ -1,0 +1,21 @@
+1. pol_cancellations.md — [CAN-1] Before the order ships
+## [CAN-1] Before the order ships
+Any order can be cancelled free of charge until it is shipped, by the customer from My Orders in the app. The support assistant cannot cancel orders itself; it guides the customer to My Orders. The refund is initiated immediately.
+
+2. pol_marketplace_sellers.md — [MKS-1] Who ships your order
+## [MKS-1] Who ships your order
+Each product in the catalog has a `fulfilled_by` field. Items are either fulfilled by ZentroMart or by an independent marketplace seller.
+
+3. help_track_order.md — [TRK-2] Delivered but not received
+## [TRK-2] Delivered but not received
+If an order shows Delivered but the customer has not received it, check with family, neighbours or the building security, then report it within 48 hours as a missing item under DWM-1.
+
+4. pol_cancellations.md — [CAN-2] After the order ships
+## [CAN-2] After the order ships
+A shipped order cannot be cancelled. The customer can:
+- refuse the parcel at the door. For cash-on-delivery orders nothing is charged. For prepaid orders the refund follows REF-1 once the parcel returns to the warehouse; or
+- accept the delivery and return the item within its return window, if the category is returnable.
+
+5. pol_coupons_offers.md — [CPN-1] One coupon per order
+## [CPN-1] One coupon per order
+Only 1 coupon can be applied per order. Coupons cannot be combined, added after the order is placed, or exchanged for cash.
