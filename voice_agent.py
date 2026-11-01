@@ -1,4 +1,5 @@
-
+from datetime import datetime
+from date_utils import refund_window
 import os
 import re
 
@@ -38,6 +39,53 @@ def make_speech_friendly(text):
     text = re.sub(r"https?://\S+", "", text)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
+def handle_refund_date(question):
+    text = question.lower()
+
+    refund_words = ["refund", "refunded", "money back"]
+    card_words = ["credit card", "debit card", "card"]
+
+    if not any(word in text for word in refund_words):
+        return None
+
+    if not any(word in text for word in card_words):
+        return None
+
+    patterns = [
+        r"\b(\d{1,2}\s+[A-Za-z]+\s+\d{4})\b",
+        r"\b(\d{4}-\d{2}-\d{2})\b",
+    ]
+
+    initiated = None
+
+    for pattern in patterns:
+        match = re.search(pattern, question)
+        if match:
+            for fmt in ("%d %B %Y", "%d %b %Y", "%Y-%m-%d"):
+                try:
+                    initiated = datetime.strptime(
+                        match.group(1), fmt
+                    ).date()
+                    break
+                except ValueError:
+                    continue
+        if initiated:
+            break
+
+    if not initiated:
+        return None
+
+    earliest, latest = refund_window(initiated)
+
+    return (
+        f"Your credit or debit card refund takes 5 to 7 business days "
+        f"from initiation. Since it was initiated on "
+        f"{initiated.strftime('%d %B %Y')}, "
+        f"you should receive it between "
+        f"{earliest.strftime('%d %B %Y')} and "
+        f"{latest.strftime('%d %B %Y')}, "
+        f"subject to bank processing."
+    )
 
 
 class VoiceAgent:
@@ -142,7 +190,12 @@ class VoiceAgent:
 
             return "I couldn't start the order verification process."
 
-        # 4. Answer general questions using RAG.
+        # 4. Handle deterministic refund-date calculations.
+        refund_answer = handle_refund_date(question)
+        if refund_answer:
+            return refund_answer
+
+        # 5. Answer general questions using RAG.
         self.last_issue = question
 
         answer, evidence = generate_answer(
@@ -151,9 +204,7 @@ class VoiceAgent:
         )
 
         self.last_evidence = evidence
-
         return answer
-
 
 def voice_turn(audio_path, agent, output_file="reply.wav"):
     """Convert customer audio into a spoken support response."""
